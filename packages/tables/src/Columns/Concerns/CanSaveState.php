@@ -15,7 +15,7 @@ trait CanSaveState
 
     public function setUp(): void
     {
-        $this->saveStateUsing(static function (Column $column, $table, Model $record, $state) {
+        $this->saveStateUsing(static function (Column $column, $table, Model $record, $state): ?string {
             $columnName = $column->getName();
 
             if ($columnRelationship = $column->getRelationship($record)) {
@@ -37,6 +37,8 @@ trait CanSaveState
 
             $record->setAttribute($columnName, $state);
             $record->save();
+
+            return $state;
         });
     }
 

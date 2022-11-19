@@ -121,6 +121,8 @@ trait HasColumns
             return null;
         }
 
+        $this->skipRender();
+
         try {
             $column->validate($input);
         } catch (ValidationException $exception) {
@@ -129,12 +131,16 @@ trait HasColumns
             ];
         }
 
-        $column->evaluate($column->getSaveStateUsing(), [
+        $input = $column->evaluate($column->getSaveStateUsing(), [
             'state' => $input,
             'table' => $this->getCachedTable(),
         ]);
 
-        return null;
+        $this->skipRender();
+    // return null;
+        return [
+            'state' => $input,
+        ];
     }
 
     protected function getTableColumns(): array
