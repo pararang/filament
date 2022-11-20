@@ -1,4 +1,5 @@
 <div
+{{--    wire:key="input-column-{{ $getName() }}-{{ $recordKey }}"--}}
     x-data="{ error: undefined, state: '{{ $getState() }}', loading: false}"
     {{ $attributes->merge($getExtraAttributes())->class([
         'filament-tables-text-input-column',

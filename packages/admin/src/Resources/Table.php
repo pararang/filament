@@ -244,6 +244,7 @@ class Table
 
     public function getReorderColumn(): ?string
     {
+        return 'TEST';
         return $this->reorderColumn;
     }
 
