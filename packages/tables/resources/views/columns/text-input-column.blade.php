@@ -1,12 +1,11 @@
 <div
-    x-data="{ error: undefined, value: '{{ $getState() }}', loading: false}"
+    x-data="{ error: undefined, state: '{{ $getState() }}', loading: false}"
     {{ $attributes->merge($getExtraAttributes())->class([
         'filament-tables-text-input-column',
     ]) }}
 >
     <input
-        x-model="value"
-        {{--    value="{{ $getState() }}"--}}
+        x-model="state"
         type="{{ $getType() }}"
         {!! $isDisabled() ? 'disabled' : null !!}
         {!! ($inputMode = $getInputMode()) ? "inputmode=\"{$inputMode}\"" : null !!}
@@ -15,7 +14,7 @@
         x-on:change="
             loading = true
             response = await $wire.setColumnValue(@js($getName()), @js($recordKey), $event.target.value)
-            if (response.state) value = response.state
+            if (response.state) state = response.state
             error = response?.error ?? undefined
             loading = false
         "
