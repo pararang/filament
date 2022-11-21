@@ -137,7 +137,7 @@ trait HasColumns
         ]);
 
         $this->skipRender();
-    // return null;
+        // return null;
         return [
             'state' => $input,
         ];
