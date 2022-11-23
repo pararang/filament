@@ -84,7 +84,7 @@ When the record is successfully created, a notification is dispatched to the use
 To customize the title of this notification, define a `getCreatedNotificationTitle()` method on the create page class:
 
 ```php
-protected function getCreatedNotificationTitle(): ?string
+protected function getCreatedNotificationMessage(): ?string
 {
     return 'User registered';
 }
